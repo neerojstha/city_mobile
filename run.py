@@ -50,6 +50,17 @@ def validate_data(values):
 
     return True    
 
+def new_sales(data):
+    """ 
+    New sales worksheet created after user submitted information
+    """
+    print("New sales sheet...\n")
+    sales_worksheet = SHEET.worksheet('sales')
+    sales_worksheet.append_row(data)
+    print("New sales sheet created.\n")
 
 
-data = sales()    
+
+data = sales()
+sales_sheet = [int(num) for num in data]    
+new_sales(sales_sheet)
