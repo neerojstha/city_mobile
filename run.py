@@ -16,21 +16,28 @@ def sales():
     """ 
     Collecting sales information from user
     """
-    print("Submit your daily sales figure")
-    print("sales figure should be 5 digits, separated by commas")
-    print("sample: 01,02,03,04,05\n")
+    while True:    
+        print("Submit your daily sales figure")
+        print("sales figure should be 5 digits, separated by commas")
+        print("sample: 01,02,03,04,05\n")
 
-    str_data = input("submit your sales figure here:")
+        str_data = input("submit your sales figure here:")
+        
+        sales_sheet = str_data.split(",")
+
+        if validate_data(sales_sheet):
+            print("Correct data")
+            break
+
+    return sales_sheet
     
-    sales_sheet = str_data.split(",")
-    validate_data(sales_sheet)
-   
 
 def validate_data(values):
     """ 
-
+    converting to integers all the strings, valueError display if
+    cann't be changed or not excepted values requirement meet.
     """
-    print(values)
+    
     try:
         [int(value) for value in values]
         if len(values) != 5:
@@ -39,7 +46,10 @@ def validate_data(values):
             )
     except ValueError as e:
         print(f"Wrong data: {e}, Enter oncemore.\n")
+        return False
+
+    return True    
 
 
 
-sales()    
+data = sales()    
