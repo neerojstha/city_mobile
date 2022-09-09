@@ -21,6 +21,23 @@ def sales():
     print("sample: 01,02,03,04,05\n")
 
     str_data = input("submit your sales figure here:")
-    print(f"Submitted data {str_data}")
+    
+    sales_sheet = str_data.split(",")
+    validate_data(sales_sheet)
+   
+
+def validate_data(values):
+    """ 
+
+    """
+    try:
+        if len(values) != 5:
+            raise ValueError(
+                f"Expect 5 digits required, you submitted {len(values)}"
+            )
+    except ValueError as e:
+        print(f"Wrong data: {e}, Enter oncemore.\n")
+
+
 
 sales()    
