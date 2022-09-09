@@ -12,8 +12,15 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('city-mobile')
 
-sales = SHEET.worksheet('sales')
+def sales():
+    """ 
+    Collecting sales information from user
+    """
+    print("Submit your daily sales figure")
+    print("sales figure should be 5 digits, separated by commas")
+    print("sample: 01,02,03,04,05\n")
 
-data = sales.get_all_values()
+    str_data = input("submit your sales figure here:")
+    print(f"Submitted data {str_data}")
 
-print(data)
+sales()    
