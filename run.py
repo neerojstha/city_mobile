@@ -30,10 +30,12 @@ def validate_data(values):
     """ 
 
     """
+    print(values)
     try:
+        [int(value) for value in values]
         if len(values) != 5:
             raise ValueError(
-                f"Expect 5 digits required, you submitted {len(values)}"
+                f"Exact 5 digits required, you submitted {len(values)}"
             )
     except ValueError as e:
         print(f"Wrong data: {e}, Enter oncemore.\n")
