@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from pprint import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -59,8 +60,24 @@ def new_sales(data):
     sales_worksheet.append_row(data)
     print("New sales sheet created.\n")
 
+def excess(sales_row):
+    """ 
+    Calculating excess data with sales and inventory difference.
+    """
+    print("Analyzing excess sheet...\n")
+    inventory = SHEET.worksheet("inventory").get_all_values()
+    inventory_row = inventory[-1]
+    print(inventory_row)
 
 
-data = sales()
-sales_sheet = [int(num) for num in data]    
-new_sales(sales_sheet)
+def main():
+    """ 
+    Program function running
+    """
+    data = sales()
+    sales_sheet = [int(num) for num in data]    
+    new_sales(sales_sheet)
+    excess(sales_sheet)
+
+print("Home of World SmartPhones")
+main()
