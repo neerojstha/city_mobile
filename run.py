@@ -104,6 +104,20 @@ def get_last_4_entries():
         columns.append(column[-4:])
     return columns
 
+def inventory_data(data):
+    """ 
+    computing the average inventory of each mobile brand and adding 5 percent
+    """
+    print("Analyzing inventory sheet...\n")
+    new_inventory_data = []
+
+    for column in data:
+        int_column = [int(num) for num in column]
+        average = sum(int_column) / len(int_column)
+        inventory_num = average * 1.05
+        new_inventory_data.append(inventory_num)
+
+    print(new_inventory_data)
 
 def main():
     """ 
