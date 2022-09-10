@@ -60,6 +60,15 @@ def new_sales(data):
     sales_worksheet.append_row(data)
     print("New sales sheet created.\n")
 
+def new_excess_worksheet(data):
+    """ 
+    New excess worksheet created after user submitted information
+    """
+    print("New excess sheet...\n")
+    excess_worksheet = SHEET.worksheet('excess')
+    excess_worksheet.append_row(data)
+    print("New excess sheet created.\n")    
+
 def excess_sheet(sales_row):
     """ 
     Calculating excess data with sales and inventory difference.
@@ -85,7 +94,7 @@ def main():
     sales_sheet = [int(num) for num in data]    
     new_sales(sales_sheet)
     new_excess_sheet = excess_sheet(sales_sheet)
-    print(new_excess_sheet)
+    new_excess_worksheet(new_excess_sheet)
 
 print("Home of World SmartPhones")
 main()
