@@ -90,6 +90,19 @@ def excess_sheet(sales_row):
     
     return excess_sheet
 
+def get_last_4_entries():
+    """ 
+    Gathering data from the last 4 entries of sales sheet
+    """
+
+    sales = SHEET.worksheet("sales")
+ 
+
+    columns = []
+    for ind in range(1, 5):
+        column = sales.col_values(ind)
+        columns.append(column[-4:])
+    return columns
 
 
 def main():
@@ -103,4 +116,6 @@ def main():
     reform_worksheet(new_excess_sheet, "excess")
 
 print("Home of World SmartPhones")
-main()
+# main()
+
+sales_columns = get_last_4_entries()
