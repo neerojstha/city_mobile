@@ -13,17 +13,18 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('city-mobile')
 
+
 def sales():
-    """ 
+    """
     Collecting sales information from user
     """
-    while True:    
+    while True:   
         print("Submit your daily sales figure")
         print("sales figure should be 5 digits, separated by commas")
         print("sample: 01,02,03,04,05\n")
 
         str_data = input("submit your sales figure here:")
-        
+      
         sales_sheet = str_data.split(",")
 
         if validate_data(sales_sheet):
@@ -31,14 +32,14 @@ def sales():
             break
 
     return sales_sheet
-    
+  
 
 def validate_data(values):
-    """ 
+    """
     converting to integers all the strings, valueError display if
     cann't be changed or not excepted values requirement meet.
     """
-    
+ 
     try:
         [int(value) for value in values]
         if len(values) != 5:
@@ -49,16 +50,18 @@ def validate_data(values):
         print(f"Wrong data: {e}, Enter oncemore.\n")
         return False
 
-    return True    
+    return True  
+
 
 def new_sales(data):
-    """ 
+    """
     New sales worksheet created after user submitted information
     """
     print("New sales sheet...\n")
     sales_worksheet = SHEET.worksheet('sales')
     sales_worksheet.append_row(data)
     print("New sales sheet created.\n")
+
 
 def new_excess_worksheet(data):
     """ 
@@ -69,20 +72,22 @@ def new_excess_worksheet(data):
     excess_worksheet.append_row(data)
     print("New excess sheet created.\n")    
 
+
 def reform_worksheet(data, worksheet):
     print(f"New {worksheet} sheet...\n")
-    worksheet_reform =SHEET.worksheet(worksheet)
+    worksheet_reform = SHEET.worksheet(worksheet)
     worksheet_reform.append_row(data)
     print(f"{worksheet} worksheet reform completed\n")
 
+
 def excess_sheet(sales_row):
-    """ 
+    """
     Calculating excess data with sales and inventory difference.
     """
     print("Analyzing excess sheet...\n")
     inventory = SHEET.worksheet("inventory").get_all_values()
     inventory_row = inventory[-1]
-    
+  
     excess_sheet = []
     for inventory, sales in zip(inventory_row, sales_row):
         excess = int(inventory) - sales
@@ -90,13 +95,13 @@ def excess_sheet(sales_row):
     
     return excess_sheet
 
+
 def get_last_4_entries():
-    """ 
+    """
     Gathering data from the last 4 entries of sales sheet
     """
 
     sales = SHEET.worksheet("sales")
- 
 
     columns = []
     for ind in range(1, 6):
@@ -104,8 +109,9 @@ def get_last_4_entries():
         columns.append(column[-5:])
     return columns
 
+
 def inventory(data):
-    """ 
+    """
     computing the average inventory of each mobile brand and adding 5 percent
     """
     print("Analyzing inventory sheet...\n")
@@ -119,8 +125,9 @@ def inventory(data):
 
     return new_inventory
 
+
 def main():
-    """ 
+    """
     Program function running
     """
     data = sales()
@@ -134,4 +141,3 @@ def main():
 
 print("Home of World SmartPhones")
 main()
-
