@@ -1,7 +1,7 @@
 <h1>City Mobile</h1>
 
 This system allows user to submit their daily sales information in the system. which helps city mobile company
-to track their sales records and level of inventory. A city mobile company expect 5 percent extra sales during special occasion. so, five percent extra inventory should be sufficient. 
+to track their sales records and level of inventory. A city mobile company expect 5 percent extra sales during special occasion. So, five percent extra inventory should be sufficient. 
 
 <hr>
 
@@ -13,9 +13,9 @@ Please click city mobile automation path: https://city-mobile.herokuapp.com/
 <h2>User Experience</h2>
 <hr>
 
-A city mobile store sales five different brand latest mobile phones. A company owner managed the sales and inventory, and want to make sure there is enough inventory for next day sale. This system allows company owner to figure out how many pieces of mobile phones need to order for tommorow.
+A city mobile store sales five different brand latest smart phones. A company owner managed the sales and inventory, and want to make sure there is enough inventory for next day sale. This system allows company owner to figure out how many pieces of smart phones need to order for tommorow.
 
-A city mobile company is an independent company, so it cann't pre-ordered more than 5 percent of inventory due to company financial limitation. so, company highly monitored the excess amount of each brand of mobile phones before order for next working day sale.
+A city mobile company is an independent company, so it cann't pre-ordered more than 5 percent of inventory due to company financial limitation. so, company highly monitored the excess amount of each brand of smart phones before order for next working day sale.
 
 <h3>Summary</h3>
 <ul>
@@ -71,7 +71,7 @@ User submitted information are analayzed and stored into the worksheet, where co
 
 <h2>City Mobile Worksheet</h2>
 <hr>
-This worksheet is read-only for users who don't have the permissions to edit the file. Only the NDoS and senior management have access to edit the file. This is to limit the number of accidental changes made to the worksheet.
+Worksheet is avaible for its user and can edit and control system.
 
 <br>
 
