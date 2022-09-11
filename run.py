@@ -99,25 +99,25 @@ def get_last_4_entries():
  
 
     columns = []
-    for ind in range(1, 5):
+    for ind in range(1, 6):
         column = sales.col_values(ind)
-        columns.append(column[-4:])
+        columns.append(column[-5:])
     return columns
 
-def inventory_data(data):
+def inventory(data):
     """ 
     computing the average inventory of each mobile brand and adding 5 percent
     """
     print("Analyzing inventory sheet...\n")
-    new_inventory_data = []
+    new_inventory = []
 
     for column in data:
         int_column = [int(num) for num in column]
         average = sum(int_column) / len(int_column)
         inventory_num = average * 1.05
-        new_inventory_data.append(inventory_num)
+        new_inventory.append(round(inventory_num))
 
-    print(new_inventory_data)
+    return new_inventory
 
 def main():
     """ 
@@ -128,8 +128,10 @@ def main():
     reform_worksheet(sales_sheet, "sales")
     new_excess_sheet = excess_sheet(sales_sheet)
     reform_worksheet(new_excess_sheet, "excess")
+    sales_columns = get_last_4_entries()
+    inventory_data = inventory(sales_columns)
+    reform_worksheet(inventory_data, "inventory")
 
 print("Home of World SmartPhones")
-# main()
+main()
 
-sales_columns = get_last_4_entries()
